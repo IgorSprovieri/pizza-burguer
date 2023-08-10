@@ -1,6 +1,6 @@
 import { Flex } from "@chakra-ui/react";
 import { colors } from "../styles/colors";
-import { Logo, Menu } from "../components";
+import { Advertising, Logo, Menu } from "../components";
 import { useState } from "react";
 
 export const MainScreen = () => {
@@ -17,6 +17,7 @@ export const MainScreen = () => {
     >
       <Logo mt="48px"></Logo>
       <Menu mt="32px" page={page} setPage={setPage}></Menu>
+      <Advertising mt="20px"></Advertising>
     </Flex>
   );
 };

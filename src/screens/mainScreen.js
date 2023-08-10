@@ -1,8 +1,11 @@
 import { Flex } from "@chakra-ui/react";
 import { colors } from "../styles/colors";
-import { Logo } from "../components";
+import { Logo, Menu } from "../components";
+import { useState } from "react";
 
 export const MainScreen = () => {
+  const [page, setPage] = useState(0);
+
   return (
     <Flex
       flexDir="column"
@@ -12,7 +15,8 @@ export const MainScreen = () => {
       w="100dvw"
       h="100dvh"
     >
-      <Logo mt="47px"></Logo>
+      <Logo mt="48px"></Logo>
+      <Menu mt="32px" page={page} setPage={setPage}></Menu>
     </Flex>
   );
 };

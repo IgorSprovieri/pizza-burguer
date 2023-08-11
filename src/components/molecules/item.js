@@ -36,7 +36,7 @@ const Item = ({ item, ...props }) => {
           {Icon ? <Icon color={orange} size="20px"></Icon> : <></>}
           <H2 ml="4px">{name}</H2>
         </Flex>
-        <H3 mt="4px">R$ {numeral(price).format("0 0.00")}</H3>
+        <H3 mt="4px">R$ {numeral(price).format("0.00")}</H3>
       </Flex>
       <Flex align="center">
         <Image

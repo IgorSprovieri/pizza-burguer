@@ -17,7 +17,7 @@ const Item = ({ item, ...props }) => {
 
   return (
     <Flex
-      w="320px"
+      w={["calc(100dvw - 32px)", "320px"]}
       h="90px"
       align="center"
       justifyContent="space-between"

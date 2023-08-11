@@ -1,3 +1,3 @@
-export * from "./logo";
-export * from "./menu";
-export * from "./Advertising";
+export * from "./atoms";
+export * from "./molecules";
+export * from "./organisms";

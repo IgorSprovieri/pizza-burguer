@@ -1,43 +1,8 @@
 import { Button, Flex } from "@chakra-ui/react";
-import {
-  BurguerIcon,
-  MilkShakeIcon,
-  PizzaIcon,
-  FriesIcon,
-  DrinksIcon,
-} from "../styles/icons";
-import { colors } from "../styles/colors";
+import { colors } from "../../styles/colors";
 
-export const Menu = ({ page, setPage, ...props }) => {
+export const Menu = ({ sections, page, setPage, ...props }) => {
   const { orange, background } = colors;
-
-  const buttons = [
-    {
-      pageId: 0,
-      children: "Pizza",
-      icon: PizzaIcon,
-    },
-    {
-      pageId: 1,
-      children: "Hambúrguers",
-      icon: BurguerIcon,
-    },
-    {
-      pageId: 2,
-      children: "Acompanhamentos",
-      icon: FriesIcon,
-    },
-    {
-      pageId: 3,
-      children: "Milk Shakes",
-      icon: MilkShakeIcon,
-    },
-    {
-      pageId: 4,
-      children: "Bebidas",
-      icon: DrinksIcon,
-    },
-  ];
 
   const btnBaseStyle = {
     margin: "0px 8px",
@@ -67,7 +32,7 @@ export const Menu = ({ page, setPage, ...props }) => {
 
   return (
     <Flex {...props}>
-      {buttons.map((btn) => {
+      {sections?.map((btn) => {
         const { pageId, children, icon } = btn;
         const variant = pageId === page ? "solid" : "outline";
 

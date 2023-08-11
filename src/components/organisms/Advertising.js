@@ -1,13 +1,7 @@
 import { Flex, Image } from "@chakra-ui/react";
-import { colors } from "../styles/colors";
+import { colors } from "../../styles/colors";
 
-export const Advertising = ({ ...props }) => {
-  const images = [
-    { src: "/blank.svg" },
-    { src: "/blank.svg" },
-    { src: "/blank.svg" },
-  ];
-
+export const Advertising = ({ images, ...props }) => {
   const imgBaseStyle = {
     w: "224px",
     h: "112px",
@@ -18,7 +12,7 @@ export const Advertising = ({ ...props }) => {
 
   return (
     <Flex {...props}>
-      {images.map((img) => {
+      {images?.map((img) => {
         const { src } = img;
 
         return <Image src={src} alt="Anúncio" {...imgBaseStyle}></Image>;

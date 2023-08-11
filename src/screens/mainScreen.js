@@ -1,7 +1,8 @@
 import { Flex } from "@chakra-ui/react";
 import { colors } from "../styles/colors";
-import { Advertising, Logo, Menu } from "../components";
+import { Advertising, ListItems, Logo, Menu } from "../components";
 import { useState } from "react";
+import { pizzas, sections, advertinsings } from "../data";
 
 export const MainScreen = () => {
   const [page, setPage] = useState(0);
@@ -16,8 +17,9 @@ export const MainScreen = () => {
       h="100dvh"
     >
       <Logo mt="48px"></Logo>
-      <Menu mt="32px" page={page} setPage={setPage}></Menu>
-      <Advertising mt="20px"></Advertising>
+      <Menu mt="32px" sections={sections} page={page} setPage={setPage}></Menu>
+      <Advertising mt="20px" images={advertinsings}></Advertising>
+      <ListItems title="Pizzas" items={pizzas}></ListItems>
     </Flex>
   );
 };

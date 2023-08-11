@@ -26,10 +26,11 @@ export const MainScreen = () => {
       bgColor={background}
       w="100dvw"
       h="100dvh"
+      overflow="hidden"
     >
       <Logo mt="48px"></Logo>
       <Menu mt="32px" sections={sections} page={page} setPage={setPage}></Menu>
-      <Advertising mt="20px" images={advertinsings}></Advertising>
+      <Advertising mt={["0px", "20px"]} images={advertinsings}></Advertising>
       <ListItems
         key={v4()}
         title={sections[page].title}

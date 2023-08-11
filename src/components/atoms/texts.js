@@ -11,7 +11,7 @@ export const H1 = ({ children, ...props }) => {
       fontSize="32px"
       fontWeight="bold"
       borderBottom={`0.5px solid ${white}`}
-      w="100%"
+      w={["calc(100% - 16px)", "100%"]}
       lineHeight="24px"
       {...props}
     >

@@ -12,9 +12,9 @@ export const ListItems = ({ title, items }) => {
       align="center"
       justify="flex-start"
     >
-      <H1 mt="48px">{title}</H1>
+      <H1 mt={["16px", "48px"]}>{title}</H1>
       <Flex
-        h="100%"
+        h={["calc(100dvh - 526px)", "calc(100dvh - 400px)"]}
         w="fit-content"
         flexDir="column"
         align="center"

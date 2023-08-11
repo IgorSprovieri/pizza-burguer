@@ -66,9 +66,10 @@ export const ItemLine = ({ items, ...props }) => {
     <Flex
       mt="16px"
       h="fit-content"
-      w="fit-content"
+      w="100%"
+      flexWrap="wrap"
       align="center"
-      justify="space-between"
+      justify="center"
       {...props}
     >
       {items?.map((item, index) => {
@@ -76,7 +77,8 @@ export const ItemLine = ({ items, ...props }) => {
           <Item
             key={v4()}
             item={item}
-            mr={index % 2 === 0 ? "16px" : ""}
+            mt={[index % 2 !== 0 ? "16px" : "", "0px"]}
+            mr={["0px", index % 2 === 0 ? "16px" : ""]}
           ></Item>
         );
       })}

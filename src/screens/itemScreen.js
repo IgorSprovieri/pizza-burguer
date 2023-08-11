@@ -18,9 +18,10 @@ export const ItemScreen = () => {
       bgColor={background}
       w="100dvw"
       h="100dvh"
+      overflow="hidden"
     >
       <Flex
-        w="600px"
+        w="clamp(0px, 100dvw, 600px)"
         mt="48px"
         padding="0px 16px"
         align="center"
@@ -42,7 +43,7 @@ export const ItemScreen = () => {
         flexDir="column"
         align="center"
         justify="flex-start"
-        w="600px"
+        w="clamp(0px, calc(100dvw - 32px), 600px)"
         h="fit-content"
         mt="32px"
         border={`1px solid ${white}`}
@@ -51,7 +52,7 @@ export const ItemScreen = () => {
       >
         <H1 ml="8px">{item.name}</H1>
         <Flex
-          flexDir="row"
+          flexDir={["column", "row"]}
           align="center"
           justify="space-between"
           w="100%"
@@ -59,7 +60,7 @@ export const ItemScreen = () => {
           mt="32px"
         >
           <Image src={item.src} w="256px" h="256px" borderRadius="20px"></Image>
-          <Paragraph w="100%" h="100%" textAlign="left" ml="16px">
+          <Paragraph w="100%" h="100%" textAlign="left" ml="16px" mt="16px">
             {item.description}
           </Paragraph>
         </Flex>

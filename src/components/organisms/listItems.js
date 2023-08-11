@@ -29,7 +29,7 @@ export const ListItems = ({ title, items }) => {
           },
         }}
       >
-        {items.map((item, i) => {
+        {items?.map((item, i) => {
           if (i % 2 === 0 && i === items.length - 1) {
             return <ItemLine key={v4()} items={[items[i], null]}></ItemLine>;
           }

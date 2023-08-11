@@ -8,28 +8,28 @@ import {
 
 export const sections = [
   {
-    pageId: 0,
-    children: "Pizza",
+    id: 0,
+    title: "Pizzas",
     icon: PizzaIcon,
   },
   {
-    pageId: 1,
-    children: "Hambúrguers",
+    id: 1,
+    title: "Hambúrguers",
     icon: BurguerIcon,
   },
   {
-    pageId: 2,
-    children: "Acompanhamentos",
+    id: 2,
+    title: "Acompanhamentos",
     icon: FriesIcon,
   },
   {
-    pageId: 3,
-    children: "Milk Shakes",
+    id: 3,
+    title: "Milk Shakes",
     icon: MilkShakeIcon,
   },
   {
-    pageId: 4,
-    children: "Bebidas",
+    id: 4,
+    title: "Bebidas",
     icon: DrinksIcon,
   },
 ];

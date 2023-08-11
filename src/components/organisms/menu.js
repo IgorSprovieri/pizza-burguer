@@ -33,16 +33,16 @@ export const Menu = ({ sections, page, setPage, ...props }) => {
   return (
     <Flex {...props}>
       {sections?.map((btn) => {
-        const { pageId, children, icon } = btn;
-        const variant = pageId === page ? "solid" : "outline";
+        const { id, title, icon } = btn;
+        const variant = id === page ? "solid" : "outline";
 
         return (
           <Button
-            key={pageId}
-            onClick={() => setPage(pageId)}
+            key={id}
+            onClick={() => setPage(id)}
             {...btnStyles(icon)[variant]}
           >
-            {children}
+            {title}
           </Button>
         );
       })}

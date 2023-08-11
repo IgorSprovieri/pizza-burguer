@@ -3,16 +3,16 @@ import { colors } from "../styles/colors";
 
 export const Advertising = ({ ...props }) => {
   const images = [
-    { src: "/logo192.png" },
-    { src: "/logo192.png" },
-    { src: "/logo192.png" },
+    { src: "/blank.svg" },
+    { src: "/blank.svg" },
+    { src: "/blank.svg" },
   ];
 
   const imgBaseStyle = {
     w: "224px",
     h: "112px",
     border: `1px solid ${colors.orange}`,
-    borderRadius: "10px",
+    borderRadius: "20px",
     margin: "0px 8px",
   };
 

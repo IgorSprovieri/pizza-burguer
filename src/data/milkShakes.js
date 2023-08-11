@@ -7,6 +7,8 @@ export const milkShakes = [
     Icon: MilkShakeIcon,
     price: "13.90",
     src: "/milk-shakes.png",
+    description:
+      "Meio litro do nosso delicioso milkshake feito com sorvete de creme, leite e barra de chocolate",
   },
   {
     sectionId: 3,
@@ -14,6 +16,8 @@ export const milkShakes = [
     Icon: MilkShakeIcon,
     price: "13.90",
     src: "/milk-shakes.png",
+    description:
+      "Meio litro do nosso delicioso milkshake feito com sorvete de creme, leite e pedaços de morango",
   },
   {
     sectionId: 3,
@@ -21,5 +25,7 @@ export const milkShakes = [
     Icon: MilkShakeIcon,
     price: "13.90",
     src: "/milk-shakes.png",
+    description:
+      "Meio litro do nosso delicioso milkshake feito com sorvete de creme, leite e ovomaltine",
   },
 ];

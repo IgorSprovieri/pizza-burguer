@@ -6,6 +6,7 @@ import { sections, advertinsings, items } from "../data";
 import { v4 } from "uuid";
 
 export const MainScreen = () => {
+  const { background } = colors;
   const [page, setPage] = useState(0);
   const [itemsFiltred, setItemsFiltred] = useState([]);
 
@@ -22,7 +23,7 @@ export const MainScreen = () => {
       flexDir="column"
       align="center"
       justify="flex-start"
-      bgColor={colors.background}
+      bgColor={background}
       w="100dvw"
       h="100dvh"
     >

@@ -51,3 +51,19 @@ export const H3 = ({ children, ...props }) => {
     </Text>
   );
 };
+
+export const Paragraph = ({ children, ...props }) => {
+  const { white } = colors;
+
+  return (
+    <Text
+      color={white}
+      fontFamily="Comfortaa, cursive"
+      fontSize="16px"
+      fontWeight="normal"
+      {...props}
+    >
+      {children}
+    </Text>
+  );
+};

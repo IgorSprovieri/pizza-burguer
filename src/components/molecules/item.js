@@ -3,26 +3,29 @@ import { colors } from "../../styles/colors";
 import { v4 } from "uuid";
 import { H2, H3 } from "../atoms";
 import numeral from "numeral";
+import { useNavigate } from "react-router-dom";
 
 const Item = ({ item, ...props }) => {
+  const navigate = useNavigate();
   const { orange, white } = colors;
 
   if (!item) {
     return <Box w="320px" h="90px" {...props}></Box>;
   }
 
-  const { Icon, name, price, src } = item;
+  const { Icon, name, price, src, id } = item;
 
   return (
     <Flex
-      align="center"
-      justifyContent="space-between"
       w="320px"
       h="90px"
+      align="center"
+      justifyContent="space-between"
       border={`1px solid ${orange}`}
       borderRadius="20px"
       padding="8px"
       cursor="pointer"
+      onClick={() => navigate(`/item/${id}`)}
       _hover={{ borderColor: white }}
       {...props}
     >

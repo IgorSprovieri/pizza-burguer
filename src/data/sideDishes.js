@@ -7,6 +7,7 @@ export const sideDishes = [
     Icon: FriesIcon,
     price: "9.90",
     src: "/fries.png",
+    description: "Aquele porção de batata frita que todo mundo adora",
   },
   {
     sectionId: 2,
@@ -14,5 +15,6 @@ export const sideDishes = [
     Icon: BurguerIcon,
     price: "12.90",
     src: "/onions.png",
+    description: "Aquele porção de Onion Rings que todo mundo adora",
   },
 ];

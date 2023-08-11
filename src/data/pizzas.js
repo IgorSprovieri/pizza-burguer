@@ -7,6 +7,8 @@ export const pizzas = [
     Icon: PizzaIcon,
     price: "49.90",
     src: "/muçarela.png",
+    description:
+      "Nossa deliciosa pizza com massa fina ou grossa e lotada de muçarela",
   },
   {
     sectionId: 0,
@@ -14,6 +16,8 @@ export const pizzas = [
     Icon: PizzaIcon,
     price: "59.90",
     src: "/muçarela.png",
+    description:
+      "Nossa deliciosa pizza com massa fina ou grossa e lotada de calabresa, cebola e muçarela",
   },
   {
     sectionId: 0,
@@ -21,6 +25,8 @@ export const pizzas = [
     Icon: PizzaIcon,
     price: "62.90",
     src: "/muçarela.png",
+    description:
+      "Nossa deliciosa pizza com massa fina e lotada de muçarela, parmesão, queijo prato e gorgonzola",
   },
   {
     sectionId: 0,
@@ -28,6 +34,8 @@ export const pizzas = [
     Icon: PizzaIcon,
     price: "62.90",
     src: "/muçarela.png",
+    description:
+      "Nossa deliciosa pizza com massa fina ou grossa e lotada de queijo, presunto, ovos cozidos, cebola, azeitona e ervilha",
   },
   {
     sectionId: 0,
@@ -35,12 +43,7 @@ export const pizzas = [
     Icon: PizzaIcon,
     price: "54.90",
     src: "/muçarela.png",
-  },
-  {
-    sectionId: 0,
-    name: "Marguerita",
-    Icon: PizzaIcon,
-    price: "57.90",
-    src: "/muçarela.png",
+    description:
+      "Nossa deliciosa pizza com massa fina ou grossa e lotada de frango e catupiry",
   },
 ];

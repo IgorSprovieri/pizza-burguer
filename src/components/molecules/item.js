@@ -6,11 +6,12 @@ import numeral from "numeral";
 
 const Item = ({ item, ...props }) => {
   const { orange, white } = colors;
-  const { Icon, name, price, src } = item;
 
   if (!item) {
     return <Box w="320px" h="90px" {...props}></Box>;
   }
+
+  const { Icon, name, price, src } = item;
 
   return (
     <Flex
@@ -25,12 +26,17 @@ const Item = ({ item, ...props }) => {
       _hover={{ borderColor: white }}
       {...props}
     >
-      <Flex flexDir="column" align="left" justifyContent="space-between">
-        <Flex>
+      <Flex
+        flexDir="column"
+        align="left"
+        justifyContent="space-between"
+        ml="8px"
+      >
+        <Flex align="center">
           {Icon ? <Icon color={orange} size="20px"></Icon> : <></>}
           <H2 ml="4px">{name}</H2>
         </Flex>
-        <H3 ml="4px">R$ {numeral(price).format("0 0.00")}</H3>
+        <H3 mt="4px">R$ {numeral(price).format("0 0.00")}</H3>
       </Flex>
       <Flex align="center">
         <Image

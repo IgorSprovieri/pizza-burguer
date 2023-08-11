@@ -2,7 +2,15 @@ import { Flex } from "@chakra-ui/react";
 import { colors } from "../styles/colors";
 import { Advertising, ListItems, Logo, Menu } from "../components";
 import { useState } from "react";
-import { pizzas, sections, advertinsings, burguers, sideDishes } from "../data";
+import {
+  pizzas,
+  sections,
+  advertinsings,
+  burguers,
+  sideDishes,
+  milkShakes,
+  drinks,
+} from "../data";
 
 export const MainScreen = () => {
   const [page, setPage] = useState(0);
@@ -35,12 +43,12 @@ export const MainScreen = () => {
         <></>
       )}
       {page === 3 ? (
-        <ListItems title="Milk Shakes" items={pizzas}></ListItems>
+        <ListItems title="Milk Shakes" items={milkShakes}></ListItems>
       ) : (
         <></>
       )}
       {page === 4 ? (
-        <ListItems title="Bebidas" items={pizzas}></ListItems>
+        <ListItems title="Bebidas" items={drinks}></ListItems>
       ) : (
         <></>
       )}

@@ -1,5 +1,4 @@
 export const advertinsings = [
-  { src: "/blank.svg" },
-  { src: "/blank.svg" },
-  { src: "/blank.svg" },
+  { src: "/ads-hungry.png" },
+  { src: "/ads-ifood.png" },
 ];

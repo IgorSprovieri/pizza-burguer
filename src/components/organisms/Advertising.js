@@ -11,7 +11,7 @@ export const Advertising = ({ images, ...props }) => {
   };
 
   return (
-    <Flex {...props}>
+    <Flex w="718px" justifyContent="flex-start" {...props}>
       {images?.map((img) => {
         const { src } = img;
 

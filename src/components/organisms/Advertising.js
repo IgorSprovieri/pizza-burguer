@@ -1,5 +1,6 @@
 import { Flex, Image } from "@chakra-ui/react";
 import { colors } from "../../styles/colors";
+import { v4 } from "uuid";
 
 export const Advertising = ({ images, ...props }) => {
   const imgBaseStyle = {
@@ -32,7 +33,9 @@ export const Advertising = ({ images, ...props }) => {
       {images?.map((img) => {
         const { src } = img;
 
-        return <Image src={src} alt="Anúncio" {...imgBaseStyle}></Image>;
+        return (
+          <Image key={v4()} src={src} alt="Anúncio" {...imgBaseStyle}></Image>
+        );
       })}
     </Flex>
   );

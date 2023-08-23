@@ -1,5 +1,6 @@
 import { Button, Flex } from "@chakra-ui/react";
 import { colors } from "../../styles/colors";
+import { v4 } from "uuid";
 
 export const Menu = ({ sections, page, setPage, ...props }) => {
   const { orange, background } = colors;
@@ -55,7 +56,7 @@ export const Menu = ({ sections, page, setPage, ...props }) => {
 
           return (
             <Button
-              key={id}
+              key={v4()}
               onClick={() => setPage(id)}
               {...btnStyles(icon)[variant]}
             >

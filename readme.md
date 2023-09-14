@@ -1,9 +1,6 @@
 # Pizza Burguer
 
-This project is a online menu for a imaginary restaurant named Pizza Burguer and made with:
-
-- React
-- Chakra UI
+This project is a online menu for a imaginary restaurant named Pizza Burguer
 
 ## Live Application
 
@@ -15,17 +12,26 @@ https://pizza-burguer.ispapps.com
 
 ![Preview](./public/preview.png)
 
-## Libraries
+## Used Technologies
 
-I also used libraries to help development:
-
+- React
+- Chakra UI
 - React Router
 - UUID
 - Numeral
 
-## Requirements
+## Main Concepts Applied
 
-- Node
+- JSX
+- React Hooks
+- List Items
+- Dynamic Routes
+- Atomic Design
+- Mobile Responsive
+
+## Requirements to Run
+
+- Node [nodejs.org](https://nodejs.org/en)
 
 ## Getting Started
 

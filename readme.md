@@ -62,4 +62,4 @@ npm run start
 
 ---
 
-Programmer since 2013, I started to work professionaly in 2020, developing games with Unity, where I opened my game studio and until 2022 I developed 16 team projects, copyright and third-party. I was also a writer for more than a year on the website crieseusjogos.com.br. After this period I started to dedicate to web development and today I work as a fulltack developer with react, next, typescript and node.
+After working as a Unity developer for 3 years, I migrated to the web development area and currently have Fullstack knowledge with React and Node. I have an app for the Apple Store and Google Play and a library for creating web pages inspired by React.

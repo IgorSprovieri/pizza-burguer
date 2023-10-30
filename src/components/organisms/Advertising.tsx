@@ -1,8 +1,14 @@
 import { Flex, Image } from "@chakra-ui/react";
 import { colors } from "@/styles/colors";
 import { v4 } from "uuid";
+import { Advertising as AdvertisingType } from "@/types";
 
-export const Advertising = ({ images, ...props }) => {
+type props = {
+  images: Array<AdvertisingType>;
+  mt: string | Array<string>;
+};
+
+export const Advertising = ({ images, ...props }: props) => {
   const imgBaseStyle = {
     w: "224px",
     h: "112px",
@@ -30,12 +36,8 @@ export const Advertising = ({ images, ...props }) => {
       }}
       {...props}
     >
-      {images?.map((img) => {
-        const { src } = img;
-
-        return (
-          <Image key={v4()} src={src} alt="Anúncio" {...imgBaseStyle}></Image>
-        );
+      {images?.map(({ src }) => {
+        return <Image key={v4()} src={src} alt="Anúncio" {...imgBaseStyle} />;
       })}
     </Flex>
   );

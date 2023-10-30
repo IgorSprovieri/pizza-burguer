@@ -5,26 +5,28 @@ import { Flex } from "@chakra-ui/react";
 import { colors } from "@/styles/colors";
 import { Advertising, ListItems, Logo, Menu } from "@/components/index";
 import { useEffect, useState } from "react";
-import { advertinsings, items } from "@/data";
+import { advertinsings } from "@/data";
 import { v4 } from "uuid";
 import axios from "axios";
 import { type } from "os";
-import { Section } from "@/types";
+import { Item, Section } from "@/types";
 
 const inter = Inter({ subsets: ["latin"] });
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 export const getStaticProps = async () => {
   const { data: sections } = await axios.get(`${apiUrl}/sections`);
+  const { data: items } = await axios.get(`${apiUrl}/items`);
 
-  return { props: { sections } };
+  return { props: { sections, items } };
 };
 
 type props = {
   sections: Array<Section>;
+  items: Array<Item>;
 };
 
-export default function Home({ sections }: props) {
+export default function Home({ sections, items }: props) {
   const { background } = colors;
   const [page, setPage] = useState<number>(0);
   const [itemsFiltred, setItemsFiltred] = useState<Array<any>>([]);
@@ -35,7 +37,7 @@ export default function Home({ sections }: props) {
     });
 
     setItemsFiltred(newList);
-  }, [page, sections]);
+  }, [page, sections, items]);
 
   return (
     <>

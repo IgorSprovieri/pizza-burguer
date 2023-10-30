@@ -2,26 +2,31 @@
   {
     "id": 0,
     "title": "Pizzas",
-    "iconUrl": "/icons/pizza"
+    "iconUrl": "/icons/pizza.svg",
+    "invertIconUrl": "/icons/pizza-black.svg"
   },
   {
     "id": 1,
     "title": "Hambúrguers",
-    "iconUrl": "/icons/burguer"
+    "iconUrl": "/icons/burguer.svg",
+    "invertIconUrl": "/icons/burguer-black.svg"
   },
   {
     "id": 2,
     "title": "Acompanhamentos",
-    "iconUrl": "/icons/fries"
+    "iconUrl": "/icons/fries.svg",
+    "invertIconUrl": "/icons/fries-black.svg"
   },
   {
     "id": 3,
     "title": "Milk Shakes",
-    "iconUrl": "/icons/milk-shakes"
+    "iconUrl": "/icons/milk-shake.svg",
+    "invertIconUrl": "/icons/milk-shake-black.svg"
   },
   {
     "id": 4,
     "title": "Bebidas",
-    "iconUrl": "/icons/drinks"
+    "iconUrl": "/icons/drink.svg",
+    "invertIconUrl": "/icons/drink-black.svg"
   }
 ]

@@ -3,15 +3,22 @@ import { colors } from "@/styles/colors";
 import { v4 } from "uuid";
 import { H2, H3 } from "../atoms";
 import numeral from "numeral";
+import { Item } from "@/types";
 
-const Item = ({ item, ...props }) => {
+type itemProps = {
+  item: Item | null;
+  mt: string | Array<string>;
+  mr: string | Array<string>;
+};
+
+const Item = ({ item, ...props }: itemProps) => {
   const { orange, white } = colors;
 
   if (!item) {
     return <Box w="320px" h="90px" {...props}></Box>;
   }
 
-  const { Icon, name, price, src, id } = item;
+  const { name, price, imageUrl } = item;
 
   return (
     <Flex
@@ -34,32 +41,32 @@ const Item = ({ item, ...props }) => {
         ml="8px"
       >
         <Flex align="center">
-          {Icon ? <Icon color={orange} size="20px"></Icon> : <></>}
+          {
+            //Icon && <Icon color={orange} size="20px"></Icon>
+          }
           <H2 ml="4px">{name}</H2>
         </Flex>
         <H3 mt="4px">R$ {numeral(price).format("0.00")}</H3>
       </Flex>
       <Flex align="center">
         <Image
-          src={src}
+          src={imageUrl}
           alt="Foto do Item"
           w="64px"
           h="64px"
           borderRadius="5px"
-        ></Image>
-        <Image
-          src="/arrow.svg"
-          alt="Ver Mais"
-          w="16px"
-          h="16px"
-          ml="8px"
-        ></Image>
+        />
+        <Image src="/arrow.svg" alt="Ver Mais" w="16px" h="16px" ml="8px" />
       </Flex>
     </Flex>
   );
 };
 
-export const ItemLine = ({ items, ...props }) => {
+type itemLineProps = {
+  items: Array<Item | null>;
+};
+
+export const ItemLine = ({ items, ...props }: itemLineProps) => {
   return (
     <Flex
       mt="16px"
@@ -77,7 +84,7 @@ export const ItemLine = ({ items, ...props }) => {
             item={item}
             mt={[index % 2 !== 0 ? "16px" : "", "0px"]}
             mr={["0px", index % 2 === 0 ? "16px" : ""]}
-          ></Item>
+          />
         );
       })}
     </Flex>

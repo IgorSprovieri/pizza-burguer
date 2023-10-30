@@ -56,6 +56,7 @@
     "description": "Um delicioso Hambúrguer de 140g lotado de queijo, suculência de carne, com alface e tomate para dar aquele toque final"
   },
   {
+    "sectionId": 1,
     "name": "X Burguer Duplo",
     "price": "32.90",
     "imageUrl": "/images/burguer.png",
@@ -67,6 +68,20 @@
     "price": "29.90",
     "imageUrl": "/images/burguer.png",
     "description": "Um delicioso Hambúrguer de 140g lotado de queijo, suculência de carne, com alface, tomate e bacon para dar aquele toque final"
+  },
+  {
+    "sectionId": 2,
+    "name": "Batata Frita",
+    "price": "9.90",
+    "imageUrl": "/images/fries.png",
+    "description": "Aquele porção de batata frita que todo mundo adora"
+  },
+  {
+    "sectionId": 2,
+    "name": "Onion Rings",
+    "price": "12.90",
+    "imageUrl": "/images/onions.png",
+    "description": "Aquele porção de Onion Rings que todo mundo adora"
   },
   {
     "sectionId": 3,

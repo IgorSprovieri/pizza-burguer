@@ -2,8 +2,14 @@ import { Flex } from "@chakra-ui/react";
 import { H1 } from "../atoms/texts";
 import { ItemLine } from "../molecules/item";
 import { v4 } from "uuid";
+import { Item } from "@/types";
 
-export const ListItems = ({ title, items }) => {
+type props = {
+  title: string;
+  items: Array<Item>;
+};
+
+export const ListItems = ({ title, items }: props) => {
   return (
     <Flex
       h="100%"
@@ -31,11 +37,11 @@ export const ListItems = ({ title, items }) => {
       >
         {items?.map((item, i) => {
           if (i % 2 === 0 && i === items.length - 1) {
-            return <ItemLine key={v4()} items={[items[i], null]}></ItemLine>;
+            return <ItemLine key={v4()} items={[items[i], null]} />;
           }
 
           return i % 2 !== 0 ? (
-            <ItemLine key={v4()} items={[items[i - 1], item]}></ItemLine>
+            <ItemLine key={v4()} items={[items[i - 1], item]} />
           ) : (
             <></>
           );

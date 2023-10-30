@@ -3,11 +3,10 @@ import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
 import { Flex } from "@chakra-ui/react";
 import { colors } from "@/styles/colors";
-import { Advertising, ListItems, Logo, Menu } from "@/components/index";
+import { Advertising, ListItems, Logo, Menu } from "@/components";
 import { useEffect, useState } from "react";
 import { v4 } from "uuid";
 import axios from "axios";
-import { type } from "os";
 import { Item, Section } from "@/types";
 
 const inter = Inter({ subsets: ["latin"] });

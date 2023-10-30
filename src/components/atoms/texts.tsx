@@ -1,7 +1,12 @@
 import { Text } from "@chakra-ui/react";
 import { colors } from "../../styles/colors";
+import { ReactNode } from "react";
 
-export const H1 = ({ children, ...props }) => {
+type props = {
+  children: ReactNode;
+};
+
+export const H1 = ({ children, ...props }: props) => {
   const { white } = colors;
 
   return (
@@ -20,7 +25,7 @@ export const H1 = ({ children, ...props }) => {
   );
 };
 
-export const H2 = ({ children, ...props }) => {
+export const H2 = ({ children, ...props }: props) => {
   const { orange } = colors;
 
   return (
@@ -36,7 +41,7 @@ export const H2 = ({ children, ...props }) => {
   );
 };
 
-export const H3 = ({ children, ...props }) => {
+export const H3 = ({ children, ...props }: props) => {
   const { white } = colors;
 
   return (
@@ -52,7 +57,7 @@ export const H3 = ({ children, ...props }) => {
   );
 };
 
-export const Paragraph = ({ children, ...props }) => {
+export const Paragraph = ({ children, ...props }: props) => {
   const { white } = colors;
 
   return (

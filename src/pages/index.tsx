@@ -1,11 +1,42 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import styles from '@/styles/Home.module.css'
+import Head from "next/head";
+import { Inter } from "next/font/google";
+import styles from "@/styles/Home.module.css";
+import { Flex } from "@chakra-ui/react";
+import { colors } from "@/styles/colors";
+import { Advertising, ListItems, Logo, Menu } from "@/components/index";
+import { useEffect, useState } from "react";
+import { advertinsings, items } from "@/data";
+import { v4 } from "uuid";
+import axios from "axios";
+import { type } from "os";
+import { Section } from "@/types";
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] });
+const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
-export default function Home() {
+export const getStaticProps = async () => {
+  const { data: sections } = await axios.get(`${apiUrl}/sections`);
+
+  return { props: { sections } };
+};
+
+type props = {
+  sections: Array<Section>;
+};
+
+export default function Home({ sections }: props) {
+  const { background } = colors;
+  const [page, setPage] = useState<number>(0);
+  const [itemsFiltred, setItemsFiltred] = useState<Array<any>>([]);
+
+  useEffect(() => {
+    const newList: any = items.filter((item) => {
+      return item.sectionId === sections[page].id;
+    });
+
+    setItemsFiltred(newList);
+  }, [page, sections]);
+
   return (
     <>
       <Head>
@@ -15,100 +46,25 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={`${styles.main} ${inter.className}`}>
-        <div className={styles.description}>
-          <p>
-            Get started by editing&nbsp;
-            <code className={styles.code}>src/pages/index.tsx</code>
-          </p>
-          <div>
-            <a
-              href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              By{' '}
-              <Image
-                src="/vercel.svg"
-                alt="Vercel Logo"
-                className={styles.vercelLogo}
-                width={100}
-                height={24}
-                priority
-              />
-            </a>
-          </div>
-        </div>
-
-        <div className={styles.center}>
-          <Image
-            className={styles.logo}
-            src="/next.svg"
-            alt="Next.js Logo"
-            width={180}
-            height={37}
-            priority
+        <Flex
+          flexDir="column"
+          align="center"
+          justify="flex-start"
+          bgColor={background}
+          w="100dvw"
+          h="100dvh"
+          overflow="hidden"
+        >
+          <Logo mt="48px" />
+          <Menu mt="32px" sections={sections} page={page} setPage={setPage} />
+          <Advertising mt={["0px", "20px"]} images={advertinsings} />
+          <ListItems
+            key={v4()}
+            title={sections[page].title}
+            items={itemsFiltred}
           />
-        </div>
-
-        <div className={styles.grid}>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2>
-              Docs <span>-&gt;</span>
-            </h2>
-            <p>
-              Find in-depth information about Next.js features and&nbsp;API.
-            </p>
-          </a>
-
-          <a
-            href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2>
-              Learn <span>-&gt;</span>
-            </h2>
-            <p>
-              Learn about Next.js in an interactive course with&nbsp;quizzes!
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2>
-              Templates <span>-&gt;</span>
-            </h2>
-            <p>
-              Discover and deploy boilerplate example Next.js&nbsp;projects.
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2>
-              Deploy <span>-&gt;</span>
-            </h2>
-            <p>
-              Instantly deploy your Next.js site to a shareable URL
-              with&nbsp;Vercel.
-            </p>
-          </a>
-        </div>
+        </Flex>
       </main>
     </>
-  )
+  );
 }

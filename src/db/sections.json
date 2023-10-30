@@ -1,0 +1,27 @@
+[
+  {
+    "id": 0,
+    "title": "Pizzas",
+    "iconUrl": "/icons/pizza"
+  },
+  {
+    "id": 1,
+    "title": "Hambúrguers",
+    "iconUrl": "/icons/burguer"
+  },
+  {
+    "id": 2,
+    "title": "Acompanhamentos",
+    "iconUrl": "/icons/fries"
+  },
+  {
+    "id": 3,
+    "title": "Milk Shakes",
+    "iconUrl": "/icons/milk-shakes"
+  },
+  {
+    "id": 4,
+    "title": "Bebidas",
+    "iconUrl": "/icons/drinks"
+  }
+]

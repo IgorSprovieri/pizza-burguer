@@ -3,6 +3,8 @@ import { Item, Section } from "@/types";
 import { Button, Flex, Image } from "@chakra-ui/react";
 import { H1, Logo, Paragraph } from "@/components";
 import { useNavigate, useParams } from "react-router-dom";
+import { useContext } from "react";
+import { SelectedItems } from "@/contexts";
 
 type props = {
   items: Array<Item>;
@@ -10,9 +12,36 @@ type props = {
 
 export const ItemScreen = ({ items }: props) => {
   const navigate = useNavigate();
+  const { selectedItems, setSelectedItems } = useContext(SelectedItems);
   const { background, white, orange } = colors;
   const { id } = useParams();
   const item = items[Number(id) || 0];
+
+  const addToCart = (item: Item) => {
+    const found = selectedItems.find(({ id }) => {
+      return item.id === id;
+    });
+
+    if (found) {
+      const newSelectedItems = selectedItems.map((selectedItem) => {
+        if (selectedItem.id === item.id) {
+          selectedItem.quantity = selectedItem.quantity
+            ? selectedItem.quantity + 1
+            : (selectedItem.quantity = 1);
+        }
+
+        return selectedItem;
+      });
+
+      setSelectedItems(newSelectedItems);
+      return;
+    }
+
+    const newSelectedItems = selectedItems;
+    item.quantity = 1;
+    newSelectedItems.push(item);
+    setSelectedItems(newSelectedItems);
+  };
 
   return (
     <Flex
@@ -70,9 +99,22 @@ export const ItemScreen = ({ items }: props) => {
             borderRadius="20px"
             alt=""
           />
-          <Paragraph w="100%" h="100%" textAlign="left" ml="16px" mt="16px">
-            {item.description}
-          </Paragraph>
+          <Flex flexDir="column" align="center" justify="space-between">
+            <Paragraph w="100%" h="100%" textAlign="left" ml="16px" mt="16px">
+              {item.description}
+            </Paragraph>
+            <Button
+              color={orange}
+              borderRadius="24px"
+              onClick={() => addToCart(item)}
+              leftIcon={
+                <Image w="20px" h="20px" src="/left-arrow.svg" alt="/" />
+              }
+              paddingLeft="8px"
+            >
+              Voltar
+            </Button>
+          </Flex>
         </Flex>
       </Flex>
     </Flex>

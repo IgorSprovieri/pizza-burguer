@@ -4,7 +4,7 @@ import { ReactNode } from "react";
 
 type props = {
   children: ReactNode;
-  mt?: string;
+  mt?: string | Array<string>;
   ml?: string;
   w?: string;
   h?: string;

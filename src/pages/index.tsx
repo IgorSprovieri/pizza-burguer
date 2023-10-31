@@ -1,15 +1,12 @@
 import Head from "next/head";
-import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
-import { Flex } from "@chakra-ui/react";
-import { colors } from "@/styles/colors";
-import { Advertising, ListItems, Logo, Menu } from "@/components";
-import { useEffect, useState } from "react";
-import { v4 } from "uuid";
 import axios from "axios";
 import { Item, Section } from "@/types";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { HomeScreen, ItemScreen } from "@/screens";
+import { Inter } from "next/font/google";
+const inter = Inter({ subsets: ["latin"], display: "swap" });
 
-const inter = Inter({ subsets: ["latin"] });
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 export const getStaticProps = async () => {
@@ -26,19 +23,7 @@ type props = {
   advertisings: Array<any>;
 };
 
-export default function Home({ sections, items, advertisings }: props) {
-  const { background } = colors;
-  const [page, setPage] = useState<number>(0);
-  const [itemsFiltred, setItemsFiltred] = useState<Array<any>>([]);
-
-  useEffect(() => {
-    const newList: any = items.filter((item) => {
-      return item.sectionId === sections[page].id;
-    });
-
-    setItemsFiltred(newList);
-  }, [page, sections, items]);
-
+export default function Index({ sections, items, advertisings }: props) {
   return (
     <>
       <Head>
@@ -48,24 +33,21 @@ export default function Home({ sections, items, advertisings }: props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={`${styles.main} ${inter.className}`}>
-        <Flex
-          flexDir="column"
-          align="center"
-          justify="flex-start"
-          bgColor={background}
-          w="100dvw"
-          h="100dvh"
-          overflow="hidden"
-        >
-          <Logo mt="48px" />
-          <Menu mt="32px" sections={sections} page={page} setPage={setPage} />
-          <Advertising mt={["0px", "20px"]} images={advertisings} />
-          <ListItems
-            key={v4()}
-            title={sections[page].title}
-            items={itemsFiltred}
-          />
-        </Flex>
+        <BrowserRouter>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <HomeScreen
+                  sections={sections}
+                  items={items}
+                  advertisings={advertisings}
+                />
+              }
+            />
+            <Route path="/item/:id" element={<ItemScreen items={items} />} />
+          </Routes>
+        </BrowserRouter>
       </main>
     </>
   );

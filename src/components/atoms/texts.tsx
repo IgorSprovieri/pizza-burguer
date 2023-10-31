@@ -4,6 +4,11 @@ import { ReactNode } from "react";
 
 type props = {
   children: ReactNode;
+  mt?: string;
+  ml?: string;
+  w?: string;
+  h?: string;
+  textAlign?: "left" | "center" | "right";
 };
 
 export const H1 = ({ children, ...props }: props) => {
@@ -12,9 +17,9 @@ export const H1 = ({ children, ...props }: props) => {
   return (
     <Text
       color={white}
-      fontFamily="Comfortaa, cursive"
-      fontSize="32px"
-      fontWeight="bold"
+      fontFamily="Inter, sans-serif"
+      fontSize="24px"
+      fontWeight="light"
       borderBottom={`0.5px solid ${white}`}
       w={["calc(100% - 16px)", "100%"]}
       lineHeight="24px"
@@ -31,8 +36,8 @@ export const H2 = ({ children, ...props }: props) => {
   return (
     <Text
       color={orange}
-      fontFamily="Comfortaa, cursive"
-      fontSize="18px"
+      fontFamily="Inter, sans-serif"
+      fontSize="16px"
       fontWeight="semibold"
       {...props}
     >
@@ -47,8 +52,8 @@ export const H3 = ({ children, ...props }: props) => {
   return (
     <Text
       color={white}
-      fontFamily="Comfortaa, cursive"
-      fontSize="20px"
+      fontFamily="Inter, sans-serif"
+      fontSize="16px"
       fontWeight="normal"
       {...props}
     >
@@ -63,7 +68,7 @@ export const Paragraph = ({ children, ...props }: props) => {
   return (
     <Text
       color={white}
-      fontFamily="Comfortaa, cursive"
+      fontFamily="Inter, sans-serif"
       fontSize="16px"
       fontWeight="normal"
       {...props}

@@ -4,6 +4,7 @@ import { v4 } from "uuid";
 import { H2, H3 } from "../atoms";
 import numeral from "numeral";
 import { Item } from "@/types";
+import { useNavigate } from "react-router-dom";
 
 type itemProps = {
   item: Item | null;
@@ -12,10 +13,11 @@ type itemProps = {
 };
 
 const Item = ({ item, ...props }: itemProps) => {
+  const navigate = useNavigate();
   const { orange, white } = colors;
 
   if (!item) {
-    return <Box w="320px" h="90px" {...props}></Box>;
+    return <Box w="320px" h="90px" {...props} />;
   }
 
   const { name, price, imageUrl } = item;
@@ -28,9 +30,9 @@ const Item = ({ item, ...props }: itemProps) => {
       justifyContent="space-between"
       border={`1px solid ${orange}`}
       borderRadius="20px"
-      padding="8px"
+      padding="14px 8px"
       cursor="pointer"
-      onClick={() => {}}
+      onClick={() => navigate(`/item/${item.id}`)}
       _hover={{ borderColor: white }}
       {...props}
     >
@@ -39,11 +41,16 @@ const Item = ({ item, ...props }: itemProps) => {
         align="left"
         justifyContent="space-between"
         ml="8px"
+        height="100%"
       >
         <Flex align="center">
-          {
-            //Icon && <Icon color={orange} size="20px"></Icon>
-          }
+          <Image
+            src={item.section?.iconUrl}
+            alt=""
+            w="20px"
+            h="20px"
+            mr="8px"
+          />
           <H2 ml="4px">{name}</H2>
         </Flex>
         <H3 mt="4px">R$ {numeral(price).format("0.00")}</H3>

@@ -21,7 +21,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "src/components/atoms/index.js"
+    "src/components/atoms/index.ts"
   ],
   "exclude": ["node_modules"]
 }

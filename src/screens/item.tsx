@@ -1,14 +1,18 @@
+import { colors } from "@/styles/colors";
+import { Item, Section } from "@/types";
 import { Button, Flex, Image } from "@chakra-ui/react";
-import { H1, Logo, Paragraph } from "../components";
-import { colors } from "../styles/colors";
+import { H1, Logo, Paragraph } from "@/components";
 import { useNavigate, useParams } from "react-router-dom";
-import { items } from "../data";
 
-export const ItemScreen = () => {
+type props = {
+  items: Array<Item>;
+};
+
+export const ItemScreen = ({ items }: props) => {
   const navigate = useNavigate();
   const { background, white, orange } = colors;
   const { id } = useParams();
-  const item = items[id];
+  const item = items[Number(id) || 0];
 
   return (
     <Flex
@@ -27,17 +31,17 @@ export const ItemScreen = () => {
         align="center"
         justify="space-between"
       >
-        <Logo></Logo>
         <Button
           variant="outline"
           color={orange}
           borderRadius="24px"
           onClick={() => navigate("/")}
-          rightIcon={<Image w="20px" h="20px" src="/arrow.svg"></Image>}
-          paddingRight="8px"
+          leftIcon={<Image w="20px" h="20px" src="/left-arrow.svg" alt="/" />}
+          paddingLeft="8px"
         >
           Voltar
         </Button>
+        <Logo />
       </Flex>
       <Flex
         flexDir="column"
@@ -59,7 +63,13 @@ export const ItemScreen = () => {
           h="100%"
           mt="32px"
         >
-          <Image src={item.src} w="256px" h="256px" borderRadius="20px"></Image>
+          <Image
+            src={item.imageUrl}
+            w="256px"
+            h="256px"
+            borderRadius="20px"
+            alt=""
+          />
           <Paragraph w="100%" h="100%" textAlign="left" ml="16px" mt="16px">
             {item.description}
           </Paragraph>

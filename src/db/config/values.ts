@@ -5,27 +5,27 @@ import { db } from "..";
 
 const insertValues = async () => {
   try {
-    sections.forEach(async ({ title, iconUrl, invertIconUrl }) => {
+    for (const { title, iconUrl, invertIconUrl } of sections) {
       await db.query(
         "INSERT INTO sections (title, iconUrl, invertIconUrl) VALUES ($1, $2, $3)",
         [title, iconUrl, invertIconUrl]
       );
-    });
+    }
 
     console.log("Values added to sections");
 
-    items.forEach(async ({ sectionId, name, price, imageUrl, description }) => {
+    for (const { sectionId, name, price, imageUrl, description } of items) {
       await db.query(
         "INSERT INTO items (sectionId, name, price, imageUrl, description) VALUES ($1, $2, $3, $4, $5)",
         [sectionId, name, price, imageUrl, description]
       );
-    });
+    }
 
     console.log("Values added to items");
 
-    advertisings.forEach(async ({ src }) => {
+    for (const { src } of advertisings) {
       await db.query("INSERT INTO advertisings (src) VALUES ($1)", [src]);
-    });
+    }
 
     console.log("Values added to advertisings");
 

@@ -10,7 +10,7 @@ export default async function handler(
 ) {
   try {
     const { rows: items } = await db.query(
-      "SELECT * FROM items JOIN sections ON items.sectionId = sections.id"
+      "SELECT * FROM items JOIN sections ON items.sectionid = sections.sectionid"
     );
 
     if (!items) {

@@ -13,12 +13,12 @@ type props = {
 
 export const HomeScreen = ({ sections, items, advertisings }: props) => {
   const { background } = colors;
-  const [page, setPage] = useState<number>(0);
+  const [page, setPage] = useState<number>(1);
   const [itemsFiltred, setItemsFiltred] = useState<Array<Item>>([]);
 
   useEffect(() => {
     const filtredItems: Array<Item> = items.filter((item) => {
-      return item.sectionid === sections[page].id;
+      return item.sectionid === page;
     });
 
     setItemsFiltred(filtredItems);
@@ -37,7 +37,11 @@ export const HomeScreen = ({ sections, items, advertisings }: props) => {
       <Logo mt="48px" />
       <Menu mt="32px" sections={sections} page={page} setPage={setPage} />
       <Advertising mt={["0px", "20px"]} images={advertisings} />
-      <ListItems key={v4()} title={sections[page].title} items={itemsFiltred} />
+      <ListItems
+        key={v4()}
+        title={sections.find((s) => s.sectionid === page)?.title || ""}
+        items={itemsFiltred}
+      />
     </Flex>
   );
 };

@@ -32,7 +32,7 @@ const Item = ({ item, ...props }: itemProps) => {
       borderRadius="20px"
       padding="14px 8px"
       cursor="pointer"
-      onClick={() => navigate(`/item/${item.id}`)}
+      onClick={() => navigate(`/item/${item.itemid}`)}
       _hover={{ borderColor: white }}
       {...props}
     >

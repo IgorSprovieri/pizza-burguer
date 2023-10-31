@@ -31,14 +31,14 @@ export const Menu = ({ sections, page, setPage, ...props }: props) => {
       {...props}
     >
       <Flex>
-        {sections?.map(({ id, title, iconurl, inverticonurl }) => {
-          const variant = id === page ? "solid" : "outline";
-          const imageUrl = id === page ? inverticonurl : iconurl;
+        {sections?.map(({ sectionid, title, iconurl, inverticonurl }) => {
+          const variant = sectionid === page ? "solid" : "outline";
+          const imageUrl = sectionid === page ? inverticonurl : iconurl;
 
           return (
             <MenuButton
               key={v4()}
-              onClick={() => setPage(id)}
+              onClick={() => setPage(sectionid)}
               imageUrl={imageUrl}
               variant={variant}
             >

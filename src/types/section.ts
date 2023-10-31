@@ -1,5 +1,5 @@
 export type Section = {
-  id: number;
+  sectionid: number;
   title: string;
   iconurl: string;
   inverticonurl: string;

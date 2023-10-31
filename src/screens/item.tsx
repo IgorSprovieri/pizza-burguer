@@ -15,16 +15,18 @@ export const ItemScreen = ({ items }: props) => {
   const { selectedItems, setSelectedItems } = useContext(SelectedItems);
   const { background, white, orange } = colors;
   const { id } = useParams();
-  const item = items[Number(id) || 0];
+  const item = items.find(({ itemid }) => Number(id) === itemid);
 
-  const addToCart = (item: Item) => {
-    const found = selectedItems.find(({ id }) => {
-      return item.id === id;
+  const addToCart = (item: Item | undefined) => {
+    if (!item) return;
+
+    const found = selectedItems.find(({ itemid }) => {
+      return item.itemid === itemid;
     });
 
     if (found) {
       const newSelectedItems = selectedItems.map((selectedItem) => {
-        if (selectedItem.id === item.id) {
+        if (selectedItem.itemid === item.itemid) {
           selectedItem.quantity = selectedItem.quantity
             ? selectedItem.quantity + 1
             : (selectedItem.quantity = 1);
@@ -83,7 +85,7 @@ export const ItemScreen = ({ items }: props) => {
         borderRadius="20px"
         padding="32px"
       >
-        <H1 ml="8px">{item.name}</H1>
+        <H1 ml="8px">{item?.name}</H1>
         <Flex
           flexDir={["column", "row"]}
           align="center"
@@ -93,7 +95,7 @@ export const ItemScreen = ({ items }: props) => {
           mt="32px"
         >
           <Image
-            src={item.imageurl}
+            src={item?.imageurl}
             w="256px"
             h="256px"
             borderRadius="20px"
@@ -101,7 +103,7 @@ export const ItemScreen = ({ items }: props) => {
           />
           <Flex flexDir="column" align="center" justify="space-between">
             <Paragraph w="100%" h="100%" textAlign="left" ml="16px" mt="16px">
-              {item.description}
+              {item?.description}
             </Paragraph>
             <Button
               color={orange}

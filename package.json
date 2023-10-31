@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "db:create": "ts-node src/db/config/tables.ts",
-    "db:insert": "ts-node src/db/config/values.ts"
+    "db:insert": "ts-node src/db/config/values.ts",
+    "db:delete": "ts-node src/db/config/delete.ts"
   },
   "dependencies": {
     "@chakra-ui/next-js": "^2.1.5",

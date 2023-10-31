@@ -1,7 +1,7 @@
 import { Section } from ".";
 
 export type Item = {
-  id: number;
+  itemid: number;
   sectionid: number;
   title: string;
   iconurl: string;

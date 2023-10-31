@@ -18,7 +18,7 @@ export const HomeScreen = ({ sections, items, advertisings }: props) => {
 
   useEffect(() => {
     const filtredItems: Array<Item> = items.filter((item) => {
-      return item.sectionId === sections[page].id;
+      return item.sectionid === sections[page].id;
     });
 
     setItemsFiltred(filtredItems);

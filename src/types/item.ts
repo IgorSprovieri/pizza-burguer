@@ -2,10 +2,12 @@ import { Section } from ".";
 
 export type Item = {
   id: number;
-  sectionId: number;
-  section?: Section;
+  sectionid: number;
+  title: string;
+  iconurl: string;
+  inverticonurl: string;
   name: string;
   price: string;
-  imageUrl: string;
+  imageurl: string;
   description: string;
 };

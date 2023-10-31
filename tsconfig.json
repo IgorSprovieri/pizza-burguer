@@ -1,4 +1,9 @@
 {
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
+  },
   "compilerOptions": {
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
@@ -21,7 +26,8 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "src/components/atoms/index.ts"
+    "src/components/atoms/index.ts",
+    "src/db/migrations/index.js"
   ],
   "exclude": ["node_modules"]
 }

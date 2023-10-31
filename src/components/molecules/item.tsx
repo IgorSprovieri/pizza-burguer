@@ -20,7 +20,7 @@ const Item = ({ item, ...props }: itemProps) => {
     return <Box w="320px" h="90px" {...props} />;
   }
 
-  const { name, price, imageUrl } = item;
+  const { name, price, imageurl } = item;
 
   return (
     <Flex
@@ -44,20 +44,14 @@ const Item = ({ item, ...props }: itemProps) => {
         height="100%"
       >
         <Flex align="center">
-          <Image
-            src={item.section?.iconUrl}
-            alt=""
-            w="20px"
-            h="20px"
-            mr="8px"
-          />
+          <Image src={item.iconurl} alt="" w="20px" h="20px" mr="8px" />
           <H2 ml="4px">{name}</H2>
         </Flex>
         <H3 mt="4px">R$ {numeral(price).format("0.00")}</H3>
       </Flex>
       <Flex align="center">
         <Image
-          src={imageUrl}
+          src={imageurl}
           alt="Foto do Item"
           w="64px"
           h="64px"

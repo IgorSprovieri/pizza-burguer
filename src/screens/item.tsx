@@ -64,7 +64,7 @@ export const ItemScreen = ({ items }: props) => {
           mt="32px"
         >
           <Image
-            src={item.imageUrl}
+            src={item.imageurl}
             w="256px"
             h="256px"
             borderRadius="20px"

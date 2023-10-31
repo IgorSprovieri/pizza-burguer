@@ -4,17 +4,19 @@ import axios from "axios";
 import { Item, Section } from "@/types";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { HomeScreen, ItemScreen } from "@/screens";
-import { Inter } from "next/font/google";
-const inter = Inter({ subsets: ["latin"], display: "swap" });
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 export const getStaticProps = async () => {
-  const { data: sections } = await axios.get(`${apiUrl}/sections`);
-  const { data: items } = await axios.get(`${apiUrl}/items`);
-  const { data: advertisings } = await axios.get(`${apiUrl}/advertisings`);
+  try {
+    const { data: sections } = await axios.get(`${apiUrl}/sections`);
+    const { data: items } = await axios.get(`${apiUrl}/items`);
+    const { data: advertisings } = await axios.get(`${apiUrl}/advertisings`);
 
-  return { props: { sections, items, advertisings } };
+    return { props: { sections, items, advertisings } };
+  } catch (error) {
+    return { props: { sections: [], items: [], advertisings: [] } };
+  }
 };
 
 type props = {
@@ -24,6 +26,8 @@ type props = {
 };
 
 export default function Index({ sections, items, advertisings }: props) {
+  console.log({ sections, items, advertisings });
+
   return (
     <>
       <Head>
@@ -32,7 +36,7 @@ export default function Index({ sections, items, advertisings }: props) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={`${styles.main} ${inter.className}`}>
+      <main className={`${styles.main}`}>
         <BrowserRouter>
           <Routes>
             <Route

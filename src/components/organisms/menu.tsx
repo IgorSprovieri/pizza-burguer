@@ -12,8 +12,6 @@ type props = {
 };
 
 export const Menu = ({ sections, page, setPage, ...props }: props) => {
-  const { orange, background } = colors;
-
   return (
     <Flex
       w="clamp(0px, 100dvw, 740px)"
@@ -33,9 +31,9 @@ export const Menu = ({ sections, page, setPage, ...props }: props) => {
       {...props}
     >
       <Flex>
-        {sections?.map(({ id, title, iconUrl, invertIconUrl }) => {
+        {sections?.map(({ id, title, iconurl, inverticonurl }) => {
           const variant = id === page ? "solid" : "outline";
-          const imageUrl = id === page ? invertIconUrl : iconUrl;
+          const imageUrl = id === page ? inverticonurl : iconurl;
 
           return (
             <MenuButton

@@ -21,28 +21,23 @@ export const ItemScreen = ({ items }: props) => {
   const addToCart = (item: Item | undefined) => {
     if (!item) return;
 
-    const found = selectedItems.find(({ itemid }) => {
-      return item.itemid === itemid;
+    const newSelectedItems: Array<Item> = [];
+    let found = false;
+
+    selectedItems.forEach((selectedItem) => {
+      if (selectedItem.itemid === item.itemid) {
+        selectedItem.quantity = (selectedItem?.quantity || 1) + 1;
+        found = true;
+      }
+
+      newSelectedItems.push(selectedItem);
     });
 
-    if (found) {
-      const newSelectedItems = selectedItems.map((selectedItem) => {
-        if (selectedItem.itemid === item.itemid) {
-          selectedItem.quantity = selectedItem.quantity
-            ? selectedItem.quantity + 1
-            : (selectedItem.quantity = 1);
-        }
-
-        return selectedItem;
-      });
-
-      setSelectedItems(newSelectedItems);
-      return;
+    if (found === false) {
+      item.quantity = 1;
+      newSelectedItems.push(item);
     }
 
-    const newSelectedItems = selectedItems;
-    item.quantity = 1;
-    newSelectedItems.push(item);
     setSelectedItems(newSelectedItems);
   };
 

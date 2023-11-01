@@ -42,9 +42,7 @@ export const Cart = () => {
 
     selectedItems.forEach((selectedItem) => {
       if (selectedItem.itemid === itemid) {
-        selectedItem.quantity = selectedItem.quantity
-          ? selectedItem.quantity + 1
-          : 1;
+        selectedItem.quantity = (selectedItem?.quantity || 1) + 1;
       }
 
       newSelectedItems.push(selectedItem);

@@ -3,24 +3,39 @@ import axios from "axios";
 import { Item, Section } from "@/types";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { HomeScreen, ItemScreen } from "@/screens";
+import { Cart } from "@/components";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
-export const getStaticProps = async () => {
+export async function getStaticPaths() {
+  return {
+    paths: [],
+    fallback: true,
+  };
+}
+
+export const getStaticProps = async ({ params }: any) => {
+  const { username } = params;
   const { data: sections } = await axios.get(`${apiUrl}/sections`);
   const { data: items } = await axios.get(`${apiUrl}/items`);
   const { data: advertisings } = await axios.get(`${apiUrl}/advertisings`);
 
-  return { props: { sections, items, advertisings } };
+  return { props: { username, sections, items, advertisings } };
 };
 
 type props = {
+  username: string;
   sections: Array<Section>;
   items: Array<Item>;
   advertisings: Array<any>;
 };
 
-export default function Index({ sections, items, advertisings }: props) {
+export default function Index({
+  username,
+  sections,
+  items,
+  advertisings,
+}: props) {
   return (
     <>
       <Head>
@@ -30,7 +45,8 @@ export default function Index({ sections, items, advertisings }: props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <BrowserRouter>
+        <Cart />
+        <BrowserRouter basename={`/pizza-burguer/${username}`}>
           <Routes>
             <Route
               path="/"

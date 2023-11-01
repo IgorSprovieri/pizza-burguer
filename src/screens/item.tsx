@@ -1,10 +1,11 @@
 import { colors } from "@/styles/colors";
-import { Item, Section } from "@/types";
-import { Button, Flex, Image } from "@chakra-ui/react";
+import { Item } from "@/types";
+import { Box, Button, Flex, Image } from "@chakra-ui/react";
 import { H1, Logo, Paragraph } from "@/components";
 import { useNavigate, useParams } from "react-router-dom";
 import { useContext } from "react";
 import { SelectedItems } from "@/contexts";
+import { AddIcon } from "@chakra-ui/icons";
 
 type props = {
   items: Array<Item>;
@@ -58,21 +59,22 @@ export const ItemScreen = ({ items }: props) => {
       <Flex
         w="clamp(0px, 100dvw, 600px)"
         mt="48px"
-        padding="0px 16px"
+        padding="0px 8px"
         align="center"
         justify="space-between"
       >
         <Button
-          variant="outline"
-          color={orange}
+          variant="ghost"
+          color={white}
           borderRadius="24px"
           onClick={() => navigate("/")}
           leftIcon={<Image w="20px" h="20px" src="/left-arrow.svg" alt="/" />}
-          paddingLeft="8px"
+          padding="0px"
         >
           Voltar
         </Button>
         <Logo />
+        <Box w="73px" />
       </Flex>
       <Flex
         flexDir="column"
@@ -101,20 +103,28 @@ export const ItemScreen = ({ items }: props) => {
             borderRadius="20px"
             alt=""
           />
-          <Flex flexDir="column" align="center" justify="space-between">
-            <Paragraph w="100%" h="100%" textAlign="left" ml="16px" mt="16px">
+          <Flex
+            flexDir="column"
+            align="center"
+            justify="space-between"
+            h="100%"
+            pl="24px"
+            pt="8px"
+            pb="8px"
+          >
+            <Paragraph w="100%" h="100%" textAlign="left">
               {item?.description}
             </Paragraph>
             <Button
-              color={orange}
+              color={background}
               borderRadius="24px"
               onClick={() => addToCart(item)}
-              leftIcon={
-                <Image w="20px" h="20px" src="/left-arrow.svg" alt="/" />
-              }
-              paddingLeft="8px"
+              leftIcon={<AddIcon />}
+              paddingLeft="14px"
+              bgColor={orange}
+              w="100%"
             >
-              Voltar
+              Adicionar
             </Button>
           </Flex>
         </Flex>

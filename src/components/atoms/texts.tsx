@@ -9,14 +9,15 @@ type props = {
   w?: string;
   h?: string;
   textAlign?: "left" | "center" | "right";
+  color?: string;
 };
 
-export const H1 = ({ children, ...props }: props) => {
+export const H1 = ({ children, color, ...props }: props) => {
   const { white } = colors;
 
   return (
     <Text
-      color={white}
+      color={color || white}
       fontFamily="Inter, sans-serif"
       fontSize="24px"
       fontWeight="light"
@@ -30,14 +31,14 @@ export const H1 = ({ children, ...props }: props) => {
   );
 };
 
-export const H2 = ({ children, ...props }: props) => {
+export const H2 = ({ children, color, ...props }: props) => {
   const { orange } = colors;
 
   return (
     <Text
-      color={orange}
+      color={color || orange}
       fontFamily="Inter, sans-serif"
-      fontSize="16px"
+      fontSize="18px"
       fontWeight="semibold"
       {...props}
     >
@@ -46,12 +47,12 @@ export const H2 = ({ children, ...props }: props) => {
   );
 };
 
-export const H3 = ({ children, ...props }: props) => {
+export const H3 = ({ children, color, ...props }: props) => {
   const { white } = colors;
 
   return (
     <Text
-      color={white}
+      color={color || white}
       fontFamily="Inter, sans-serif"
       fontSize="16px"
       fontWeight="normal"
@@ -62,12 +63,12 @@ export const H3 = ({ children, ...props }: props) => {
   );
 };
 
-export const Paragraph = ({ children, ...props }: props) => {
+export const Paragraph = ({ children, color, ...props }: props) => {
   const { white } = colors;
 
   return (
     <Text
-      color={white}
+      color={color || white}
       fontFamily="Inter, sans-serif"
       fontSize="16px"
       fontWeight="normal"

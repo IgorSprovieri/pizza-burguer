@@ -1,11 +1,6 @@
 import { SelectedItems } from "@/contexts";
 import { colors } from "@/styles/colors";
-import {
-  AddIcon,
-  HamburgerIcon,
-  MinusIcon,
-  PlusSquareIcon,
-} from "@chakra-ui/icons";
+import { AddIcon, HamburgerIcon, MinusIcon } from "@chakra-ui/icons";
 import {
   Drawer,
   DrawerBody,
@@ -18,15 +13,24 @@ import {
   useDisclosure,
   Flex,
   Image,
-  IconButton,
   Text,
 } from "@chakra-ui/react";
-import { useContext, useRef } from "react";
-import { H1, H2, H3 } from "..";
+import { useContext } from "react";
+import { H2, H3 } from "..";
 import numeral from "numeral";
 import { Item } from "@/types";
+import axios from "axios";
+import { useRouter } from "next/router";
 
-export const Cart = () => {
+const phoneNumber = process.env.NEXT_PUBLIC_TWILIO_NUMBER;
+const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
+type props = {
+  username: string;
+};
+
+export const Cart = ({ username }: props) => {
+  const router = useRouter();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { selectedItems, setSelectedItems } = useContext(SelectedItems);
   const { orange, red } = colors;
@@ -34,6 +38,18 @@ export const Cart = () => {
     (sum, { quantity }) => sum + (quantity || 1),
     0
   );
+
+  const onFinish = async () => {
+    try {
+      await axios.put(`${apiUrl}/order/${username.replace("+", "%2B")}`, {
+        items: selectedItems,
+      });
+
+      return router.push(`https://wa.me/${phoneNumber}`);
+    } catch (error) {
+      alert("Não foi possível completar seu pedido");
+    }
+  };
 
   const addQuantity = (itemid: number) => {
     if (!itemid) return;
@@ -189,7 +205,12 @@ export const Cart = () => {
                 </H2>
               </Flex>
             </Flex>
-            <Button bgColor={orange} w="100%" borderRadius="32px">
+            <Button
+              onClick={() => onFinish()}
+              bgColor={orange}
+              w="100%"
+              borderRadius="32px"
+            >
               Finalizar
             </Button>
           </DrawerFooter>

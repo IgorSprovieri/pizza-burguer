@@ -1,11 +1,11 @@
 import Head from "next/head";
-import axios from "axios";
 import { Item, Section } from "@/types";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { HomeScreen, ItemScreen } from "@/screens";
 import { Cart } from "@/components";
-
-const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+import { sectionRepository } from "@/db/repositories";
+import { itemRepository } from "@/db/repositories/item";
+import { advertisingRepository } from "@/db/repositories/advertising";
 
 export async function getStaticPaths() {
   return {
@@ -14,11 +14,13 @@ export async function getStaticPaths() {
   };
 }
 
-export const getStaticProps = async ({ params }: any) => {
+type staticProps = { params: { username: string } };
+
+export const getStaticProps = async ({ params }: staticProps) => {
   const { username } = params;
-  const { data: sections } = await axios.get(`${apiUrl}/sections`);
-  const { data: items } = await axios.get(`${apiUrl}/items`);
-  const { data: advertisings } = await axios.get(`${apiUrl}/advertisings`);
+  const sections = await sectionRepository.getSections();
+  const items = await itemRepository.getItems();
+  const advertisings = await advertisingRepository.getAdvertisings();
 
   return { props: { username, sections, items, advertisings } };
 };
@@ -30,12 +32,9 @@ type props = {
   advertisings: Array<any>;
 };
 
-export default function Index({
-  username,
-  sections,
-  items,
-  advertisings,
-}: props) {
+export default function Index(props: props) {
+  const { username, sections, items, advertisings } = props;
+
   return (
     <>
       <Head>
@@ -45,7 +44,7 @@ export default function Index({
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <Cart />
+        <Cart username={username} />
         <BrowserRouter basename={`/pizza-burguer/${username}`}>
           <Routes>
             <Route

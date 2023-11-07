@@ -27,7 +27,8 @@
     "**/*.ts",
     "**/*.tsx",
     "src/components/atoms/index.ts",
-    "src/db/migrations/index.js"
+    "src/db/migrations/index.js",
+    "src/pages/services/wpp.js"
   ],
   "exclude": ["node_modules"]
 }

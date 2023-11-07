@@ -23,6 +23,13 @@ export const createTables = async () => {
 
     console.log("Advertisings table created");
 
+    await db.query(
+      `CREATE TABLE orders ( orderid SERIAL PRIMARY KEY, username TEXT, stage TEXT, "orderlist" JSONB[], checked BOOLEAN )`,
+      []
+    );
+
+    console.log("Orders table created");
+
     return;
   } catch (error) {
     console.log(error);

@@ -2,6 +2,7 @@ import { orderRepository } from "@/db/repositories";
 import { sendMessage } from "@/services/wpp";
 import { Order } from "@/types";
 import { NextApiRequest, NextApiResponse } from "next";
+import cors from "cors";
 
 const startOrder = async (username: string): Promise<void> => {
   await sendMessage(username, `Olá, aqui é o pizza burguer`);
@@ -32,41 +33,48 @@ const adressResponse = async (username: string): Promise<void> => {
   await orderRepository.updateStage(username, "finish");
 };
 
+const post = async (req: NextApiRequest, res: NextApiResponse) => {
+  try {
+    type Body = { message: string; username: string };
+    const { message, username }: Body = req.body;
+
+    const rows = await orderRepository.getOrder(username);
+
+    const found: Order = rows[0];
+
+    if (!found) {
+      if (message === "Olá, desejo fazer um pedido") {
+        await startOrder(username);
+      }
+      return res.status(200).json({ success: true });
+    }
+
+    if (found.stage === "payMethod") {
+      await payMethodResponse(username);
+      return res.status(200).json({ success: true });
+    }
+
+    if (found.stage === "adress") {
+      await adressResponse(username);
+      return res.status(200).json({ success: true });
+    }
+
+    return res.status(200).json({ success: true });
+  } catch (error: any) {
+    return res.status(500).json({ error: error?.message });
+  }
+};
+
+const corsMiddleware = cors({
+  origin: "https://api.wpp.ispapps.com",
+  methods: ["POST"], //
+});
+
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  if (req.method === "POST") {
-    try {
-      type Body = { message: string; username: string };
-      const { message, username }: Body = req.body;
-
-      const rows = await orderRepository.getOrder(username);
-
-      const found: Order = rows[0];
-
-      if (!found) {
-        if (message === "Olá, desejo fazer um pedido") {
-          await startOrder(username);
-        }
-        return res.status(200).json({ success: true });
-      }
-
-      if (found.stage === "payMethod") {
-        await payMethodResponse(username);
-        return res.status(200).json({ success: true });
-      }
-
-      if (found.stage === "adress") {
-        await adressResponse(username);
-        return res.status(200).json({ success: true });
-      }
-
-      return res.status(200).json({ success: true });
-    } catch (error: any) {
-      return res.status(500).json({ error: error?.message });
-    }
-  }
-
-  return res.status(402).json({ error: "Method is not valid" });
+  corsMiddleware(req, res, async () => {
+    await post(req, res);
+  });
 }

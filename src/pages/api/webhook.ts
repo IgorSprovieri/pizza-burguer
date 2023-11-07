@@ -37,27 +37,31 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  type Body = { message: string; username: string };
-  const { message, username }: Body = req.body;
+  if (req.method === "POST") {
+    type Body = { message: string; username: string };
+    const { message, username }: Body = req.body;
 
-  const rows = await orderRepository.getOrder(username);
+    const rows = await orderRepository.getOrder(username);
 
-  const found: Order = rows[0];
+    const found: Order = rows[0];
 
-  if (!found) {
-    if (message === "Olá, desejo fazer um pedido") {
-      await startOrder(username);
+    if (!found) {
+      if (message === "Olá, desejo fazer um pedido") {
+        await startOrder(username);
+      }
+      return res.status(200).json({ success: true });
     }
-    return res.status(200).json({ success: true });
+
+    if (found.stage === "payMethod") {
+      await payMethodResponse(username);
+      return res.status(200).json({ success: true });
+    }
+
+    if (found.stage === "adress") {
+      await adressResponse(username);
+      return res.status(200).json({ success: true });
+    }
   }
 
-  if (found.stage === "payMethod") {
-    await payMethodResponse(username);
-    return res.status(200).json({ success: true });
-  }
-
-  if (found.stage === "adress") {
-    await adressResponse(username);
-    return res.status(200).json({ success: true });
-  }
+  return res.status(402).json({ error: "Method is not valid" });
 }

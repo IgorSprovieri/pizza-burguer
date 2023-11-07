@@ -66,8 +66,8 @@ const post = async (req: NextApiRequest, res: NextApiResponse) => {
 };
 
 const corsMiddleware = cors({
-  origin: "https://api.wpp.ispapps.com",
-  methods: ["POST"], //
+  origin: process.env.NEXT_PUBLIC_WPP_API_URL,
+  methods: ["POST"],
 });
 
 export default async function handler(

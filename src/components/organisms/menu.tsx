@@ -1,8 +1,7 @@
 import { Flex } from "@chakra-ui/react";
-import { colors } from "@/styles/colors";
 import { v4 } from "uuid";
 import { Section } from "@/types";
-import { MenuButton } from "../atoms/menuButton";
+import { MenuButton } from "../atoms/";
 
 type props = {
   sections: Array<Section>;

@@ -1,7 +1,7 @@
 import { colors } from "@/styles/colors";
 import { Item } from "@/types";
 import { Box, Button, Flex, Image } from "@chakra-ui/react";
-import { H1, Logo, Paragraph } from "@/components";
+import { H1, Logo, OrangeButton, Paragraph } from "@/components";
 import { useNavigate, useParams } from "react-router-dom";
 import { useContext } from "react";
 import { SelectedItems } from "@/contexts";
@@ -110,17 +110,12 @@ export const ItemScreen = ({ items }: props) => {
             <Paragraph w="100%" h="100%" textAlign="left">
               {item?.description}
             </Paragraph>
-            <Button
-              color={background}
-              borderRadius="24px"
+            <OrangeButton
               onClick={() => addToCart(item)}
               leftIcon={<AddIcon />}
-              paddingLeft="14px"
-              bgColor={orange}
-              w="100%"
             >
               Adicionar
-            </Button>
+            </OrangeButton>
           </Flex>
         </Flex>
       </Flex>

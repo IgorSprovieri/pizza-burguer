@@ -1,6 +1,5 @@
 import { SelectedItems } from "@/contexts";
 import { colors } from "@/styles/colors";
-import { AddIcon, HamburgerIcon, MinusIcon } from "@chakra-ui/icons";
 import {
   Drawer,
   DrawerBody,
@@ -9,19 +8,13 @@ import {
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
-  Button,
   useDisclosure,
-  Flex,
-  Image,
-  Text,
 } from "@chakra-ui/react";
 import { useContext } from "react";
-import { CartButton, CartItem, CartTotal, H2, H3 } from "..";
-import numeral from "numeral";
-import { Item } from "@/types";
+import { CartButton, CartItem, CartTotal } from "..";
 import axios from "axios";
 import { useRouter } from "next/router";
-import { CartQuantity } from "../molecules/CartQuantity";
+import { CartQuantity } from "../molecules";
 
 const phoneNumber = process.env.NEXT_PUBLIC_WPP_NUMBER;
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;

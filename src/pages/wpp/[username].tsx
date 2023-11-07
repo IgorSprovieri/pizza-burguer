@@ -6,6 +6,7 @@ import { Cart } from "@/components";
 import { sectionRepository } from "@/db/repositories";
 import { itemRepository } from "@/db/repositories/item";
 import { advertisingRepository } from "@/db/repositories/advertising";
+import { Notify } from "@/components/organisms";
 
 export async function getStaticPaths() {
   return {
@@ -44,6 +45,7 @@ export default function Index(props: props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
+        <Notify />
         <Cart username={username} />
         <BrowserRouter basename={`/wpp/${username}`}>
           <Routes>

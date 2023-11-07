@@ -4,7 +4,7 @@ import { Box, Button, Flex, Image } from "@chakra-ui/react";
 import { H1, Logo, OrangeButton, Paragraph } from "@/components";
 import { useNavigate, useParams } from "react-router-dom";
 import { useContext } from "react";
-import { SelectedItems } from "@/contexts";
+import { NotifyContext, SelectedItems } from "@/contexts";
 import { AddIcon } from "@chakra-ui/icons";
 
 type props = {
@@ -13,6 +13,7 @@ type props = {
 
 export const ItemScreen = ({ items }: props) => {
   const navigate = useNavigate();
+  const { setNotifyText } = useContext(NotifyContext);
   const { selectedItems, setSelectedItems } = useContext(SelectedItems);
   const { background, white, orange } = colors;
   const { id } = useParams();
@@ -39,6 +40,7 @@ export const ItemScreen = ({ items }: props) => {
     }
 
     setSelectedItems(newSelectedItems);
+    setNotifyText(`${item.name} Adicionado ao Carrinho`);
   };
 
   return (

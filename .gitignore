@@ -37,3 +37,4 @@ next-env.d.ts
 
 .wwebjs_cache
 /tokens
+.env

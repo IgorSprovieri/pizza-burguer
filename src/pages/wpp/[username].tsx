@@ -45,7 +45,7 @@ export default function Index(props: props) {
       </Head>
       <main>
         <Cart username={username} />
-        <BrowserRouter basename={`/pizza-burguer/${username}`}>
+        <BrowserRouter basename={`/wpp/${username}`}>
           <Routes>
             <Route
               path="/"

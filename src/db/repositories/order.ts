@@ -27,7 +27,7 @@ class OrderRepository {
 
   async updateStage(username: string, stage: string): Promise<void> {
     await db.query(
-      `UPDATE orders SET stage = $1 WHERE id = $2 AND stage != 'finish'`,
+      `UPDATE orders SET stage = $1 WHERE username = $2 AND stage != 'finish'`,
       [stage, username]
     );
   }

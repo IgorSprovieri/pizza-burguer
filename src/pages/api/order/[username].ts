@@ -1,5 +1,5 @@
 import { orderRepository } from "@/db/repositories";
-import { sendMessage } from "@/services/twilio";
+import { sendMessage } from "@/services/wpp";
 import { Item, Order } from "@/types";
 import { NextApiRequest, NextApiResponse } from "next";
 import numeral from "numeral";

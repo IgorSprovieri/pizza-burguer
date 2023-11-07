@@ -22,7 +22,7 @@ import { Item } from "@/types";
 import axios from "axios";
 import { useRouter } from "next/router";
 
-const phoneNumber = process.env.NEXT_PUBLIC_TWILIO_NUMBER;
+const phoneNumber = process.env.NEXT_PUBLIC_WPP_NUMBER;
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 type props = {
@@ -41,7 +41,7 @@ export const Cart = ({ username }: props) => {
 
   const onFinish = async () => {
     try {
-      await axios.put(`${apiUrl}/order/${username.replace("+", "%2B")}`, {
+      await axios.put(`${apiUrl}/order/${username}`, {
         items: selectedItems,
       });
 

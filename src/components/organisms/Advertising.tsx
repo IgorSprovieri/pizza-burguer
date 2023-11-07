@@ -21,7 +21,7 @@ export const Advertising = ({ images, ...props }: props) => {
   return (
     <Flex
       w="clamp(0px, 100dvw, 716px)"
-      h="218px"
+      h={["232px", "218px"]}
       justifyContent="flex-start"
       overflowX="scroll"
       scrollSnapType="x mandatory"

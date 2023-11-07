@@ -20,8 +20,8 @@ export const CartQuantity = () => {
       w="24px"
       h="24px"
       textAlign="center"
-      top={["8px", "26px"]}
-      right={["8px", "58px"]}
+      top={["12px", "26px"]}
+      right={["34px", "58px"]}
       borderRadius="32px"
       zIndex={1}
       fontSize="15px"

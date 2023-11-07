@@ -14,9 +14,9 @@ export const Menu = ({ sections, page, setPage, ...props }: props) => {
   return (
     <Flex
       w="clamp(0px, 100dvw, 740px)"
-      h="80px"
+      h={["110px", "80px"]}
       flexDir="row"
-      align="center"
+      align="top"
       justify="flex-start"
       overflowX="scroll"
       sx={{

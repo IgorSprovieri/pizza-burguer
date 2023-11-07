@@ -15,7 +15,7 @@ export const CartButton = ({ onClick }: Props) => {
       bgColor="transparent"
       onClick={onClick}
       position="absolute"
-      top={["8px", "32px"]}
+      top={["16px", "32px"]}
       right={["8px", "32px"]}
       padding="4px"
     >

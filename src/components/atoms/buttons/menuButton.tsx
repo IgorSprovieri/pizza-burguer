@@ -18,6 +18,8 @@ export const MenuButton = ({ variant, children, imageUrl, onClick }: props) => {
     size: "sm",
     borderRadius: "100px",
     border: `1px solid ${orange}`,
+    paddingLeft: ["20px", "16px"],
+    paddingRight: ["20px", "16px"],
   };
 
   const btnStyles = {

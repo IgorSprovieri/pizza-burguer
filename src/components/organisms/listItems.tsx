@@ -20,7 +20,7 @@ export const ListItems = ({ title, items }: props) => {
     >
       <H1 mt={["16px", "48px"]}>{title}</H1>
       <Flex
-        h={["calc(100dvh - 400px)"]}
+        h={["calc(100dvh - 360px)", "calc(100dvh - 400px)"]}
         w="fit-content"
         flexDir="column"
         align="center"

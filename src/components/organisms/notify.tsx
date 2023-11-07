@@ -34,7 +34,7 @@ export const Notify = () => {
         position="fixed"
         w={["100%", "50%"]}
         top="16px"
-        left={["50%", "25%"]}
+        left={["0%", "25%"]}
       >
         <NotifyCard text={notifyText} />
       </Flex>

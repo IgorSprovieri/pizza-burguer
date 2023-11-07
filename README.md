@@ -4,7 +4,7 @@ This project is a online menu for a imaginary restaurant named Pizza Burguer, wi
 
 ## Live Application
 
-```
+```bash
 https://pizzaburguer.ispapps.com
 ```
 
@@ -65,7 +65,7 @@ docker run --name pizza-burguer-db -e POSTGRES_PASSWORD=docker -e POSTGRES_USER=
 
 4- Create .env File Following Example:
 
-```env
+```bash
 NEXT_PUBLIC_POSTGRES_USER=docker
 NEXT_PUBLIC_POSTGRES_DB=docker
 NEXT_PUBLIC_POSTGRES_PASSWORD=docker

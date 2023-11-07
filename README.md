@@ -1,40 +1,103 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Pizza Burguer
+
+This project is a online menu for a imaginary restaurant named Pizza Burguer, with automatic chatbot via whatsapp
+
+## Live Application
+
+```
+https://pizzaburguer.ispapps.com
+```
+
+## Preview
+
+![Preview](./public/preview.png)
+
+## Used Technologies
+
+- React
+- Next
+- Typescript
+- Chakra UI
+- React Router Dom
+- Framer Motion
+- Numeral
+- Axios
+- Postgres
+
+## Main Concepts Applied
+
+- JSX
+- React Hooks
+- List Items
+- Dynamic Routes
+- Atomic Design
+- Mobile Responsive
+- SSR with Next
+- GetStaticProps
+- SQL Query
+- Next Api Routes
+
+## Requirements to Run
+
+- Node [nodejs.org](https://nodejs.org/en)
+- Whatsapp API [github.com](https://github.com/IgorSprovieri/whatsapp-api)
 
 ## Getting Started
 
-First, run the development server:
+1- Clone the Repo:
+
+```bash
+git clone https://github.com/IgorSprovieri/pizza-burguer
+```
+
+2- Install Dependencies:
+
+```bash
+cd pizza-burguer
+npm install
+```
+
+3- Create DB on Docker:
+
+```bash
+docker run --name pizza-burguer-db -e POSTGRES_PASSWORD=docker -e POSTGRES_USER=docker -p 5432:5432 -d -t postgres
+```
+
+4- Create .env File Following Example:
+
+```env
+NEXT_PUBLIC_POSTGRES_USER=docker
+NEXT_PUBLIC_POSTGRES_DB=docker
+NEXT_PUBLIC_POSTGRES_PASSWORD=docker
+NEXT_PUBLIC_POSTGRES_HOST=localhost
+NEXT_PUBLIC_POSTGRES_PORT=5432
+
+NEXT_PUBLIC_BASE_URL=http://localhost:3000/wpp
+NEXT_PUBLIC_API_URL=http://localhost:3000/api
+
+NEXT_PUBLIC_WPP_API_URL=https://api.wpp.ispapps.com
+NEXT_PUBLIC_WPP_NUMBER=+5511989444841
+```
+
+5- Create Tables:
+
+```bash
+npm run db:create
+npm run db:insert
+```
+
+6- Run the Project:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Author
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+<img src="https://media.licdn.com/dms/image/D4D03AQFdLhogHwQVog/profile-displayphoto-shrink_800_800/0/1672976913935?e=1695859200&v=beta&t=SR6o-9db7Oi-uRMAXwFS_mW4ZZXeAI1YQ7MfVwYVnDI" alt="Igor Sprovieri" style="width: 30%; border-radius: 50px;"/>
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+### _Igor Sprovieri_
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+After working as a Unity developer for 3 years, I migrated to the web development area and currently have Fullstack and Mobile knowledge with React, React Native and Node.

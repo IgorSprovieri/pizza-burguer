@@ -94,7 +94,7 @@ npm run dev
 
 ## Author
 
-<img src="https://media.licdn.com/dms/image/D4D03AQFdLhogHwQVog/profile-displayphoto-shrink_800_800/0/1672976913935?e=1695859200&v=beta&t=SR6o-9db7Oi-uRMAXwFS_mW4ZZXeAI1YQ7MfVwYVnDI" alt="Igor Sprovieri" style="width: 30%; border-radius: 50px;"/>
+<img src="https://avatars.githubusercontent.com/u/72152106?v=4" alt="Igor Sprovieri" style="width: 30%; border-radius: 50px;"/>
 
 ### _Igor Sprovieri_
 

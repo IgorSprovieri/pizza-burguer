@@ -1,5 +1,3 @@
-import { Section } from ".";
-
 export type Item = {
   itemid: number;
   sectionid: number;

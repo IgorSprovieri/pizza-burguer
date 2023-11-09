@@ -1,10 +1,9 @@
 import { SwapItems } from "@/components";
 import { sectionRepository } from "@/db/repositories";
 import { colors } from "@/styles/colors";
-import { MenuItem, Section } from "@/types";
-import { ArrowBackIcon, ArrowForwardIcon } from "@chakra-ui/icons";
+import { MenuItem } from "@/types";
 import { Button, Flex, Heading } from "@chakra-ui/react";
-import { IconButton, Image, Text } from "@chakra-ui/react";
+import { Image, Text } from "@chakra-ui/react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useState } from "react";
@@ -72,13 +71,8 @@ type Props = {
 export default function Page({ menuItems }: Props) {
   const router = useRouter();
   const { background } = colors;
-  const [title, setTitle] = useState<string>(menuItems[0].title);
-  const [description, setDescription] = useState<string>(
-    menuItems[0].description
-  );
-  const [bigImageUrl, setBigImageUrl] = useState<string>(
-    menuItems[0].bigImageUrl
-  );
+  const [menuItem, setMenuItem] = useState<MenuItem>(menuItems[0]);
+  const { title, description, bigImageUrl } = menuItem;
 
   return (
     <>
@@ -148,11 +142,7 @@ export default function Page({ menuItems }: Props) {
           top="50px"
         />
         <SwapItems
-          onChange={(menuItem: MenuItem) => {
-            setTitle(menuItem.title);
-            setDescription(menuItem.description);
-            setBigImageUrl(menuItem.bigImageUrl);
-          }}
+          onChange={(menuItem: MenuItem) => setMenuItem(menuItem)}
           menuItems={menuItems}
         />
       </main>

@@ -12,13 +12,13 @@ export const BigImage = ({ bigImageUrl }: Props) => {
 
   const animate = async () => {
     if (anim === "initial") {
-      await wait(1);
+      await wait(0.75);
       setAnim("entry");
       return;
     }
 
     setAnim("exit");
-    await wait(0.5);
+    await wait(0.75);
     setNewBigImageUrl(bigImageUrl);
     setAnim("entry");
   };
@@ -38,7 +38,7 @@ export const BigImage = ({ bigImageUrl }: Props) => {
       initial={{ translateY: "1024px" }}
       animate={anim}
       variants={variants}
-      transition={{ duration: 1 }}
+      transition={{ duration: 0.75 }}
       src={newBigImageUrl}
       alt=""
       style={{ position: "fixed", left: "747px", top: "50px", width: "1024px" }}

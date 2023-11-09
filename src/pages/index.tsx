@@ -1,4 +1,5 @@
 import { BigImage, SwapItems } from "@/components";
+import { HomeTextsAnimation } from "@/components/organisms/homeTextsAnimation";
 import { sectionRepository } from "@/db/repositories";
 import { colors } from "@/styles/colors";
 import { MenuItem } from "@/types";
@@ -24,7 +25,7 @@ export const getStaticProps = async () => {
       title: "Pizzas",
       weight: "960g",
       description:
-        "Temos deliciosas pizzas, lotados de queijo e personalizados do jeito que você mais deseja",
+        "Temos deliciosas pizzas, lotados de queijo e personalizados do seu jeito",
       imageUrl: "/images/muçarela.png",
       bigImageUrl: "/images/pizza-big.png",
     },
@@ -87,51 +88,7 @@ export default function Page({ menuItems }: Props) {
           <Flex w="100%" h="50px" mt="32px" pl="132px">
             <Image src="/logo.svg" alt="Logo" />
           </Flex>
-          <Flex
-            w="100%"
-            mt="88px"
-            pl="132px"
-            flexDir="column"
-            align="left"
-            justify="flex-start"
-          >
-            <Heading
-              color="white"
-              fontFamily="Comfortaa"
-              fontWeight={500}
-              fontSize="72px"
-            >
-              {title}
-            </Heading>
-            <Text
-              color="#B3B2B2"
-              fontFamily="Comfortaa"
-              fontWeight={400}
-              fontSize="22px"
-              mt="32px"
-              w="512px"
-            >
-              {description}
-            </Text>
-            <Button
-              onClick={() =>
-                router.push(
-                  "https://wa.me//5511989444841?text=Olá, desejo fazer um pedido"
-                )
-              }
-              color={background}
-              fontFamily="Comfortaa"
-              fontWeight={700}
-              fontSize="20px"
-              mt="32px"
-              w="250px"
-              h="50px"
-              borderRadius="100px"
-              background="linear-gradient(-90deg,#DD6B20, #FA9233)"
-            >
-              Peça Já o Seu
-            </Button>
-          </Flex>
+          <HomeTextsAnimation menuItem={menuItem} />{" "}
         </Flex>
         <BigImage bigImageUrl={bigImageUrl} />
         <SwapItems

@@ -30,12 +30,12 @@ export const SwapImage = ({ position, menuItem, direction }: Props) => {
       translateX: ["0px"],
       translateY: ["0px"],
     },
-    right: {
+    left: {
       translateX: position === "left" ? "228px" : "0px",
       translateY: position === "left" ? "-64px" : "0px",
       opacity: 0,
     },
-    left: {
+    right: {
       translateX: position === "left" ? "0px" : "-228px",
       translateY: position === "left" ? "0px" : "-64px",
       opacity: 0,

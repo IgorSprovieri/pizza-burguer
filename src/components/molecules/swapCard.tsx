@@ -32,8 +32,8 @@ export const SwapCard = ({ menuItem, direction }: Props) => {
       translateX: ["0px"],
       translateY: ["0px"],
     },
-    right: { translateX: "228px", translateY: "64px", opacity: 0 },
-    left: { translateX: "-228px", translateY: "64px", opacity: 0 },
+    right: { translateX: "-228px", translateY: "64px", opacity: 0 },
+    left: { translateX: "228px", translateY: "64px", opacity: 0 },
   };
 
   return (

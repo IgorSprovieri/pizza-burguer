@@ -1,4 +1,4 @@
-import { SwapItems } from "@/components";
+import { BigImage, SwapItems } from "@/components";
 import { sectionRepository } from "@/db/repositories";
 import { colors } from "@/styles/colors";
 import { MenuItem } from "@/types";
@@ -71,7 +71,7 @@ type Props = {
 export default function Page({ menuItems }: Props) {
   const router = useRouter();
   const { background } = colors;
-  const [menuItem, setMenuItem] = useState<MenuItem>(menuItems[0]);
+  const [menuItem, setMenuItem] = useState<MenuItem>(menuItems[1]);
   const { title, description, bigImageUrl } = menuItem;
 
   return (
@@ -133,14 +133,7 @@ export default function Page({ menuItems }: Props) {
             </Button>
           </Flex>
         </Flex>
-        <Image
-          src={bigImageUrl}
-          alt=""
-          w="1024px"
-          position="fixed"
-          left="747px"
-          top="50px"
-        />
+        <BigImage bigImageUrl={bigImageUrl} />
         <SwapItems
           onChange={(menuItem: MenuItem) => setMenuItem(menuItem)}
           menuItems={menuItems}
